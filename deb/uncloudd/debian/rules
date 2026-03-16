@@ -1,0 +1,26 @@
+#!/usr/bin/make -f
+
+SOURCE_VERSION  := $(shell dpkg-parsechangelog --show-field version)
+# TODO(miek): defaults to amd64
+SOURCE          := https://github.com/psviderski/uncloud/releases/download/v$(SOURCE_VERSION)/uncloudd_linux_amd64.tar.gz
+DOWNLOAD        := uncloudd_linux_amd64.tar.gz
+BINARY          := uncloudd
+
+%:
+	dh $@ --with sysuser
+
+override_dh_auto_configure:
+	dh_clean
+	if [ ! -f $(DOWNLOAD) ]; then curl -L $(SOURCE) > $(DOWNLOAD); fi
+	cp forgejo-runner-$(SOURCE_VERSION)-linux-amd64 $(BINARY) && chmod 755 $(BINARY)
+
+override_dh_strip:
+
+override_dh_auto_clean:
+	rm -rf debian/$(BINARY)/usr/bin
+
+override_dh_auto_install:
+	mkdir -p debian/$(BINARY)/usr/bin
+	cp $(BINARY) debian/$(BINARY)/usr/bin
+	mkdir -p debian/$(BINARY)/etc/$(BINARY)
+	cp debian/config.yml debian/$(BINARY)/etc/$(BINARY)
