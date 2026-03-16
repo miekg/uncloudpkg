@@ -1,10 +1,15 @@
-Source: uncloud
+Source: uncloudd
 Section: utils
 Priority: optional
+Build-Depends: debhelper (>= 9), lsb-release
 Maintainer: Miek Gieben <miek@miek.nl>
-Homepage: https://github.com/psviderski/uncloud
+Vcs-Git: https://github.com/psviderski/uncloud
+Homepage: https://uncloud.run
+
 Package: uncloudd
+Architecture: any
 Depends: docker.io
+Pre-Depends: adduser, sysuser-helper
 Description: Uncloud Daemon
  Lightweight clustering and container orchestration tool that lets you deploy and
- manage web apps across cloud VMs and bare meta l with minimised cluster management overhead.
+ manage web apps across cloud VMs and bare metal with minimised cluster management overhead.
