@@ -8,6 +8,6 @@ Homepage: https://uncloud.run
 
 Package: uncloud-corrosion
 Architecture: any
-Pre-Depends: adduser, sysuser-helper
+Pre-Depends: adduser
 Description: Uncloud gossip-based distributed store
  Corrosion is a Rust program that propagates a SQLite database with a gossip protocol.

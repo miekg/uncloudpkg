@@ -9,7 +9,7 @@ Homepage: https://uncloud.run
 Package: uncloudd
 Architecture: any
 Depends: docker.io, containerd, uncloud-corrosion
-Pre-Depends: adduser, sysuser-helper
+Pre-Depends: adduser
 Description: Uncloud Daemon
  Lightweight clustering and container orchestration tool that lets you deploy and
  manage web apps across cloud VMs and bare metal with minimised cluster management overhead.

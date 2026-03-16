@@ -1,0 +1,6 @@
+all:
+	(cd corrosion; dpkg-buildpackage -us -uc)
+	(cd uncloudd; dpkg-buildpackage -us -uc)
+
+clean:
+	git clean -f -d
