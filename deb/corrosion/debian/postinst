@@ -2,8 +2,7 @@
 
 case "$1" in
     configure)
-        systemctl daemon-reload
-        systemctl enable corrosion.service
+        adduser --system --home /var/lib/uncloud --shell /usr/sbin/nologin --group uncloud || true
         exit 0
         ;;
 
