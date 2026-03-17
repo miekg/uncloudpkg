@@ -19,6 +19,9 @@ override_dh_strip:
 override_dh_auto_clean:
 	rm -rf debian/$(BINARY)/usr/bin
 
+override_dh_installsystemd:
+	dh_installsystemd --no-start --restart-after-upgrade --name=uncloud
+
 override_dh_auto_install:
 	mkdir -p debian/$(BINARY)/usr/bin
 	cp $(BINARY) debian/$(BINARY)/usr/bin
