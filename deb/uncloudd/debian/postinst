@@ -5,7 +5,7 @@ case "$1" in
         adduser --system --home /var/lib/uncloud --shell /usr/sbin/nologin --group uncloud || true
         adduser uncloud adm || true
         systemctl daemon-reload
-        systemctl enable uncloudd.service
+        systemctl enable uncloud.service
         exit 0
         ;;
 
