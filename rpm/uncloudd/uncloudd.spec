@@ -45,3 +45,12 @@ install -D -m 0750 -d                  %{buildroot}%{_localstatedir}/lib/%{name}
 %{_unitdir}/uncloud.service
 %{_sysconfdir}/docker/docker-daemon.json
 %dir %{_localstatedir}/lib/%{name}
+
+%post
+%systemd_post uncloud.service
+
+%preun
+%systemd_preun uncloud.service
+
+%postun
+%systemd_postun_with_restart uncloud.service

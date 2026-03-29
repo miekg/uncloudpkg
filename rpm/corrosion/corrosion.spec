@@ -6,7 +6,7 @@ License:        ASL-2.0
 URL:            https://uncloud.run
 Source0:        %{name}-%{version}.tar.gz
 Source1:        corrosion.service
-BuildRequires:  pkgconfig(systemd)
+BuildRequires:  pkgconfig(systemd), systemd-rpm-macros
 %{?systemd_ordering}
 
 %description
@@ -22,11 +22,20 @@ curl -L https://github.com/psviderski/corrosion/releases/download/v%{version}/co
 tar xf %{name}.tar.gz
 
 %install
-cp %{_topdir}corrosion.service %{buildroot}/../corrosion.service
+cp %{_topdir}uncloud-corrosion.service %{buildroot}/../uncloud-corrosion.service
 
-install -D -m 0755 corrosion          %{buildroot}/%{_bindir}/corrosion
-install -D -m 0644 corrosion.service  %{buildroot}/%{_unitdir}/corrosion.service
+install -D -m 0755 corrosion                  %{buildroot}/%{_bindir}/corrosion
+install -D -m 0644 uncloud-corrosion.service  %{buildroot}/%{_unitdir}/uncloud-corrosion.service
 
 %files
 %{_bindir}/corrosion
-%{_unitdir}/corrosion.service
+%{_unitdir}/uncloud-corrosion.service
+
+%post
+%systemd_post uncloud-corrosion.service
+
+%preun
+%systemd_preun uncloud-corrosion.service
+
+%postun
+%systemd_postun_with_restart uncloud-corrosion.service
