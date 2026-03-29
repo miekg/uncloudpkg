@@ -3,7 +3,7 @@
 case "$1" in
     configure)
         adduser --system --home /var/lib/uncloud --shell /usr/sbin/nologin --group uncloud || true
-        adduser miek adm || true
+        adduser uncloud adm || true
         exit 0
         ;;
 
