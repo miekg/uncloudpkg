@@ -32,6 +32,7 @@ tar xf %{name}.tar.gz
 
 %install
 cp %{_topdir}uncloud.service %{buildroot}/../uncloud.service
+cp %{_topdir}%{name}d.conf %{buildroot}/../%{name}d.conf
 cp %{_topdir}docker-daemon.json %{buildroot}/../docker-daemon.json
 
 install -D -m 0755 %{name}d         %{buildroot}/%{_bindir}/%{name}d
