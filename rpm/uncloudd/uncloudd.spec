@@ -49,6 +49,7 @@ install -D -m 0640 %{name}d.conf       %{buildroot}/usr/lib/sysusers.d/%{name}d.
 
 %post
 %systemd_post uncloud.service
+mkdir /var/lib/uncloud && chown uncloud:uncloud /var/lib/uncloud
 
 %preun
 %systemd_preun uncloud.service
